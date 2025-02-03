@@ -18,7 +18,7 @@ class Router
         $this->response = $response;
     }
 
-    public function get(string $path, callable $callback) : void
+    public function get(string $path, $callback) : void
     {
         $this->routes['get'][$path] = $callback;
     }
@@ -32,7 +32,18 @@ class Router
     {
         $path = $this->request->getPath();
         $method = $this->request->method();
-        $callback = $this->routes[$method][$path];
+        $callback = $this->routes[$method][$path] ?? false;
+        if(!$callback) {
+            return "Not found";
+        }
+
+        if(is_string($callback)) {
+            Application::$app->view->renderView($callback);
+        }
+
+        if(is_array($callback)) {
+            $callback[0] = new $callback[0];
+        }
         return call_user_func($callback);
     }
 }

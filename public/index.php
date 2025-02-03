@@ -3,20 +3,12 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\Application;
-
+use App\Controllers\HomeController;
 
 $app = new Application();
 
-$app->router->get('/', function () {
-    echo "hello world";
-});
+$app->router->get('/', [HomeController::class, 'home']);
+$app->router->get('/about', [HomeController::class, 'about']);
 
-$app->router->get('/article', function () {
-    echo "article page";
-});
-
-$app->router->get('/about', function () {
-    echo "about page";
-});
 
 $app->run();
