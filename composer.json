@@ -1,0 +1,13 @@
+{
+  "name": "youcode/brief-mvc",
+  "description": "",
+  "require": {
+    "vlucas/phpdotenv": "^5.2",
+    "symfony/var-dumper": "^5.3"
+  },
+  "autoload" : {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
