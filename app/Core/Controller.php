@@ -6,8 +6,8 @@ use App\Core\Application;
 
 class Controller
 {
-    public function render($view)
+    public function render($view, $params = [])
     {
-        Application::$app->view->renderView($view);
+        return Application::$app->view->renderView($view, $params);
     }
 }

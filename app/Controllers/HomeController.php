@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $this->render('home');
+        return $this->render('home');
     }
 
     public function about()

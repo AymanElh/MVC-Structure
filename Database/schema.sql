@@ -1,0 +1,18 @@
+-- Drop the database if it exists
+DROP DATABASE IF EXISTS mvc;
+
+-- Create the database
+CREATE DATABASE mvc;
+
+-- Create the users table
+CREATE TABLE users
+(
+    id        SERIAL PRIMARY KEY,
+    firstName VARCHAR(255) NOT NULL,
+    lastName  VARCHAR(255) NOT NULL,
+    email     VARCHAR(255) NOT NULL,
+    password  VARCHAR(255) NOT NULL
+);
+
+
+drop table users;
