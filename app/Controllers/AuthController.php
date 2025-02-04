@@ -21,8 +21,8 @@ class AuthController extends Controller
             $user->loadData($request->getBody());
             if($user->validate() && $user->register()) {
                 echo  "User Added Successfully";
-//                Application::$app->response->redirect('/');
-//                exit;
+                Application::$app->response->redirect('/');
+                exit;
             }
             return $this->render('signup', [
                 'model' => $user
