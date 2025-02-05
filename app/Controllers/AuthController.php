@@ -46,4 +46,11 @@ class AuthController extends Controller
         ]);
     }
 
+    public function logout() : void
+    {
+        Application::$app->session->remove('user');
+        header("Location: /");
+        exit;
+    }
+
 }

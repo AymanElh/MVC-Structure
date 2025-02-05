@@ -30,7 +30,10 @@ $app->router->post('/signup', [AuthController::class, 'signup']);
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);
 
+$app->router->get('/logout', [AuthController::class, 'logout']);
+
 $app->router->get('/articles', [ArticleController::class, 'showAll']);
+$app->router->get('/articles/{id}', [ArticleController::class, 'showArticle']);
 
 //$app->db->applyMigration();
 

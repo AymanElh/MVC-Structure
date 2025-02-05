@@ -16,7 +16,7 @@ class Session
 
     public function get(string $key)
     {
-        return $_SESSION[$key];
+        return $_SESSION[$key] ?? null;
     }
 
     public function setFlashMessages(string $key, string $message, string $type = 'success')
@@ -26,6 +26,16 @@ class Session
             'type' => $type,
             'remove' => false
         ];
+    }
+
+    public function remove($key) : void
+    {
+        unset($_SESSION[$key]);
+    }
+
+    public function destroy() : void
+    {
+        session_destroy();
     }
 
     public function getFlashMessages(string $key)
@@ -44,6 +54,4 @@ class Session
             }
         }
     }
-
-
 }

@@ -32,4 +32,9 @@ class Article extends DbModel
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public static function findArticle($conditions)
+    {
+        return static::findOne($conditions);
+    }
 }

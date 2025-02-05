@@ -1,3 +1,8 @@
+<?php
+use App\Core\Application;
+$isAuthenticated = Application::$app->session->get('user');
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,7 +15,7 @@
 <body>
 
 
-<!-- navbar -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -20,8 +25,13 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarButtons">
             <div class="navbar-nav">
-                <a href="/login" class="btn btn-outline-primary me-2">Login</a>
-                <a href="/signup" class="btn btn-primary">Sign Up</a>
+                <?php if ($isAuthenticated) : ?>
+                    <a href="/profile" class="btn btn-outline-secondary me-2">Profile</a>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                <?php else : ?>
+                    <a href="/login" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="/signup" class="btn btn-primary">Sign Up</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
