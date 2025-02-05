@@ -35,6 +35,11 @@ abstract class DbModel extends Model
         return $stmt->fetchObject(static::class);
     }
 
+    public function getDb() : Database
+    {
+        return Application::$app->db;
+}
+
     public static function prepare($sql)
     {
         return Application::$app->db->conn->prepare($sql);

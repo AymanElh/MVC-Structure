@@ -29,8 +29,21 @@ class View
         foreach ($params as $key => $value) {
             $$key = $value;
         }
+
+        $frontViewPath = Application::$ROOT_PATH . "/app/views/front/$view.html.twig";
+        dump($frontViewPath);
+        $backViewPath = Application::$ROOT_PATH . "/app/views/back/$view.html.twig";
+
+        if (file_exists($frontViewPath)) {
+            $viewPath = $frontViewPath;
+        } elseif (file_exists($backViewPath)) {
+            $viewPath = $backViewPath;
+        } else {
+            throw new \Exception("View file '$view' not found in front or back.");
+        }
+
         ob_start();
-        include_once Application::$ROOT_PATH . "/app/views/$view.php";
+        include_once $viewPath;
         return ob_get_clean();
     }
 }

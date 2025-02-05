@@ -43,6 +43,7 @@ class LoginForm extends DbModel
 
         if(!$user) {
             $this->createErrorMessage('email', 'User not Found');
+            return false;
         }
 
         if(!password_verify($this->password, $user->password)) {

@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Core\Application;
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
+use App\Controllers\ArticleController;
 
 use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
@@ -29,6 +30,8 @@ $app->router->post('/signup', [AuthController::class, 'signup']);
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);
 
-$app->db->applyMigration();
+$app->router->get('/articles', [ArticleController::class, 'showAll']);
+
+//$app->db->applyMigration();
 
 $app->run();
