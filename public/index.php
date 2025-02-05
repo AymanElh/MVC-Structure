@@ -29,4 +29,6 @@ $app->router->post('/signup', [AuthController::class, 'signup']);
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);
 
+$app->db->applyMigration();
+
 $app->run();

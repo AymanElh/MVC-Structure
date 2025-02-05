@@ -61,6 +61,16 @@ abstract class Model
     }
 
     /**
+     * @param string $attribute
+     * @param string $message
+     * @return void
+     */
+    public function createErrorMessage(string $attribute, string $message)
+{
+    $this->errors[$attribute][] = $message;
+}
+
+    /**
      * @return string[]
      */
     public function errorMessages() : array
@@ -88,5 +98,10 @@ abstract class Model
     public function getFirstError(string $attribute) : ?string
     {
         return $this->errors[$attribute][0] ?? null;
+    }
+
+    public function getLabel(string $attribute) : string
+    {
+        return $this->labels()[$attribute] ?? '';
     }
 }

@@ -44,6 +44,6 @@ class Router
         if(is_array($callback)) {
             $callback[0] = new $callback[0];
         }
-        return call_user_func($callback, $this->request);
+        return call_user_func($callback, $this->request, $this->response);
     }
 }
